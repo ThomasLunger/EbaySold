@@ -7,7 +7,6 @@ def get_latest_sold_listings():
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
     listings = soup.find_all('li', {'class': 's-item s-item__pl-on-bottom'})
-    sold_items = []
     for listing in listings:
         title_elem = listing.find('span', {'role': 'heading'}).get_text()
         price_elem = listing.find('span', {'class': 's-item__price'}).get_text()
